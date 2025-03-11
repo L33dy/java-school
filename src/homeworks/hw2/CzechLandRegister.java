@@ -2,7 +2,7 @@ package homeworks.hw2;
 
 import java.util.List;
 
-public class CzechLandRegister implements Register {
+public class CzechLandRegister implements LandRegister {
     public List<Property> properties;
 
     @Override

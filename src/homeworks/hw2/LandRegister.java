@@ -1,6 +1,6 @@
 package homeworks.hw2;
 
-public interface Register {
+public interface LandRegister {
     void registerProperty(Property property);
     int getAverageAcreage();
     void changePropertyOwner(Owner newOwner, Property property);
