@@ -5,6 +5,7 @@ import java.util.List;
 public class Property {
     private String address;
     private int acreage;
+
     private List<Owner> owners;
 
     public Property(String address, int acreage, List<Owner> owners) {
@@ -23,5 +24,8 @@ public class Property {
 
     public List<Owner> getOwners() {
         return owners;
+    }
+    public void setOwner(Owner owner) {
+        owners.add(owner);
     }
 }

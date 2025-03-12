@@ -1,9 +1,10 @@
 package homeworks.hw2;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CzechLandRegister implements LandRegister {
-    public List<Property> properties;
+    public List<Property> properties = new ArrayList<>();
 
     @Override
     public void registerProperty(Property property) {
@@ -19,10 +20,15 @@ public class CzechLandRegister implements LandRegister {
 
     @Override
     public void changePropertyOwner(Owner newOwner, Property property) {
+        int propertyIndex = properties.indexOf(property);
+
+        System.out.println(propertyIndex);
+
+        // properties.get(propertyIndex).setOwner(newOwner);
     }
 
     @Override
     public int getPropertyCount(Owner owner) {
-        return 0;
+        return (int) properties.stream().filter(p -> p.getOwners().contains(owner)).count();
     }
 }
