@@ -13,7 +13,10 @@ public class CzechLandRegister implements LandRegister {
 
     @Override
     public int getAverageAcreage() {
-        /*int acreageSum = 0;
+        /*
+        tady je implementovany reseni, kterymu asi budete rozumet vic, to pod tim je vic advanced
+
+        int acreageSum = 0;
 
         for (Property property : properties) {
             acreageSum += property.getAcreage();
@@ -33,7 +36,10 @@ public class CzechLandRegister implements LandRegister {
 
     @Override
     public int getPropertyCount(Owner owner) {
-        /*int propertyCount = 0;
+        /*
+        to samy tady, takze feel free to use jakykoliv
+
+        int propertyCount = 0;
 
         for (Property property : properties) {
             if (property.getOwners().contains(owner)) {
