@@ -13,6 +13,12 @@ public class CzechLandRegister implements LandRegister {
 
     @Override
     public int getAverageAcreage() {
+        /*int acreageSum = 0;
+
+        for (Property property : properties) {
+            acreageSum += property.getAcreage();
+        }*/
+
         int acreageSum = properties.stream().mapToInt(Property::getAcreage).sum();
 
         return acreageSum / properties.size();
@@ -22,13 +28,21 @@ public class CzechLandRegister implements LandRegister {
     public void changePropertyOwner(Owner newOwner, Property property) {
         int propertyIndex = properties.indexOf(property);
 
-        System.out.println(propertyIndex);
-
-        // properties.get(propertyIndex).setOwner(newOwner);
+        properties.get(propertyIndex).setOwner(newOwner);
     }
 
     @Override
     public int getPropertyCount(Owner owner) {
-        return (int) properties.stream().filter(p -> p.getOwners().contains(owner)).count();
+        /*int propertyCount = 0;
+
+        for (Property property : properties) {
+            if (property.getOwners().contains(owner)) {
+                propertyCount++;
+            }
+        }*/
+
+        int propertyCount = (int) properties.stream().filter(p -> p.getOwners().contains(owner)).count();
+
+        return propertyCount;
     }
 }

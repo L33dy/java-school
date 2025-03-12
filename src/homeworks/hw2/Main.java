@@ -1,6 +1,7 @@
 package homeworks.hw2;
 
-import java.util.Collections;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -9,8 +10,8 @@ public class Main {
         Owner adam = new Owner("Adam", "Nový");
         Owner petr = new Owner("Petr", "Petrov");
 
-        Property prop1 = new Property("a", 15, Collections.singletonList(adam));
-        Property prop2 = new Property("b", 20, Collections.singletonList(petr));
+        Property prop1 = new Property("a", 15, new ArrayList<>(List.of(adam)));
+        Property prop2 = new Property("b", 20, new ArrayList<>(List.of(petr)));
 
         c.registerProperty(prop1);
         c.registerProperty(prop2);
