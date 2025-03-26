@@ -1,5 +1,5 @@
 package base;
 
-public abstract class Week {
-    public abstract void run();
+public interface Week {
+    void run();
 }
