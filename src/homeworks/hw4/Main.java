@@ -1,10 +1,12 @@
 package homeworks.hw4;
 
+import homeworks.hw4.utils.FileUtil;
+
 import java.util.*;
 
 public class Main {
     private static final Map<String, String> vocabulary = new HashMap<>();
-    private static final int minWords = 10;
+    private static final int minWords = 5;
 
     private static boolean takingCommands = true;
 
@@ -23,6 +25,7 @@ public class Main {
             String czechTranslation = scanner.nextLine().trim();
 
             vocabulary.put(englishWord, czechTranslation);
+            FileUtil.writeToFile(englishWord + "," + czechTranslation);
 
         } while (vocabulary.size() < minWords);
 
@@ -42,7 +45,7 @@ public class Main {
 
             switch (input) {
                 case "test":
-                    test();
+                    test(true);
                     break;
                 case "exit":
                     takingCommands = false;
@@ -51,14 +54,16 @@ public class Main {
         }
     }
 
-    private static void test() {
+    private static void test(boolean fromFile) {
         Set<String> wordsToTest = new HashSet<>();
+        Map<String, String> words = fromFile ? FileUtil.readFromFile() : vocabulary;
         int mistakes = 0;
 
         Random random = new Random();
-        String[] keys = vocabulary.keySet().toArray(String[]::new);
+        String[] keys = words.keySet().toArray(String[]::new);
+
         while (wordsToTest.size() < Math.min(minWords, 5)) {
-            wordsToTest.add(keys[random.nextInt(vocabulary.size())]);
+            wordsToTest.add(keys[random.nextInt(words.size())]);
         }
 
         for (String word : wordsToTest) {
@@ -68,7 +73,7 @@ public class Main {
             System.out.print("Enter czech translation of '" + word + "': ");
             input = scanner.nextLine().trim();
 
-            if (input.equalsIgnoreCase(vocabulary.get(word))) {
+            if (input.equalsIgnoreCase(words.get(word))) {
                 System.out.println("Correct!");
             } else {
                 System.out.println("Incorrect!");
